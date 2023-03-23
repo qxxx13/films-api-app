@@ -1,5 +1,4 @@
 export const routes = {
-    root: "/",
-    films: "/films",
-    bestFilms: "/bestfilms"
+    root: "/page/:page_id",
+    bestFilms: "/bestfilms/page/:page_id"
 };
