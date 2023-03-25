@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ApiItemModel } from "../../models/ApiItemModel";
-import { ApiResponseModel } from "../../models/ApiResponseModel";
+import { FilmsItemModel } from "../../models/FilmsItemModel";
+import { FilmsModel } from "../../models/FilmsModel";
 import { RootStoreType } from "../rootReducer";
 import { initialFilmsState } from "./filmsDataModel";
 
@@ -8,7 +8,7 @@ const filmsSLice = createSlice({
     name: "filmsData",
     initialState: initialFilmsState,
     reducers: {
-        setFilms: (state, action: PayloadAction<ApiItemModel[]>) => {
+        setFilms: (state, action: PayloadAction<FilmsItemModel[]>) => {
             state.data.items.push(...action.payload);
         },
         setIsLoading: (state, action: PayloadAction<boolean>) => {
@@ -29,22 +29,13 @@ const filmsSLice = createSlice({
     }
 });
 
-export const {
-    setFilms,
-    setIsLoading,
-    setTotal,
-    setTotalPages,
-    setPage,
-    clearFilms
-} = filmsSLice.actions;
+export const { setFilms, setIsLoading, setTotal, setTotalPages, setPage, clearFilms } = filmsSLice.actions;
 
 //? Selectors
-export const getData = (store: RootStoreType): ApiResponseModel =>
-    store.filmsData.data;
-export const getFilms = (store: RootStoreType): ApiItemModel[] =>
-    store.filmsData.data.items;
+export const getData = (store: RootStoreType): FilmsModel => store.filmsData.data;
+export const getFilms = (store: RootStoreType): FilmsItemModel[] => store.filmsData.data.items;
 export const getPage = (store: RootStoreType): number => store.filmsData.page;
-export const getIsLoading = (store: RootStoreType): boolean =>
-    store.filmsData.isLoading;
+export const getTotalPage = (store: RootStoreType): number => store.filmsData.data.totalPages;
+export const getIsLoading = (store: RootStoreType): boolean => store.filmsData.isLoading;
 
 export default filmsSLice.reducer;

@@ -6,7 +6,8 @@ import { BestFilmsPage } from '../pages/BestFilmsPage/BestFilmsPage';
 
 export const Router: React.FC = () => {
     return <Routes>
-        <Route path={routes.root} element={<FilmsPage />} />
+        <Route path={routes.root} element={<h1>HOME</h1>} />
+        <Route path={routes.films} element={<FilmsPage />} />
         <Route path={routes.bestFilms} element={<BestFilmsPage />} />
         <Route path='*' element={<h1>404</h1>} />
     </Routes>;

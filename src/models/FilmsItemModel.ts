@@ -1,4 +1,4 @@
-export type ApiItemModel = {
+export type FilmsItemModel = {
     kinopoiskId: number;
     imdbId: string;
     nameRu: string;

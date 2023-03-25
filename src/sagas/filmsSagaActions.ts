@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import * as ActionType from "./filmsSagaActionsType";
 
-export const loadFilms = createAction<number>(ActionType.LoadFilmsActionType);
-export const loadFilmById = createAction(ActionType.LoadFilmByIdActionType);
+export const loadFilms = createAction<number>("LOAD_FILMS");
+export const loadFilmById = createAction("LOAD_FILM_BY_ID");
+export const loadBestFilms = createAction<number>("LOAD_BEST_FILMS");
