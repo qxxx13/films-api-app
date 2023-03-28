@@ -7,24 +7,23 @@ import { useCallback } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { Pagination, Skeleton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { clearFilms, getPage, setPage } from '../../store/filmsData/filmsDataReducer';
-import { getTotalPage } from './../../store/filmsData/filmsDataReducer';
+import { clearBestFilms, getBestFilms, getBestFilmsCurentPage, getBestFilmsPagesCount, setBestFilmsCurentPage } from './../../store/bestFilmsData/bestFilmsDataReducer';
 
 export const BestFilmsPage: React.FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const page = useAppSelector(getPage);
-    const totalPages = useAppSelector(getTotalPage);
-
+    const page = useAppSelector(getBestFilmsCurentPage);
+    const totalPages = useAppSelector(getBestFilmsPagesCount);
+    const films = useAppSelector(getBestFilms);
     const onChange = (event: React.ChangeEvent<unknown>, page: number) => {
         navigate(`/bestfilms/page/${page}`);
-        dispatch(setPage(page));
+        dispatch(setBestFilmsCurentPage(page));
     };
 
     const updateFilms = useCallback(() => dispatch(loadBestFilms(page)), [dispatch, page]);
 
     useEffect(() => {
-        dispatch(clearFilms());
+        dispatch(clearBestFilms());
         updateFilms();
     }, [updateFilms, dispatch]);
 
@@ -36,7 +35,7 @@ export const BestFilmsPage: React.FC = () => {
                     :
                     <Skeleton variant="rectangular" width={'100%'} height={45} />
                 }
-                <FilmsList />
+                <FilmsList films={films} />
             </Scrollbars>
         </Box>
     );

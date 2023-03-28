@@ -1,6 +1,6 @@
-import { FilmsItemModel } from "./FilmsItemModel";
+import { BestFilmsItemModel } from "./BestFilmsItemModel";
 
 export type BestFilmsModel = {
     pagesCount: number;
-    films: FilmsItemModel[];
+    films: BestFilmsItemModel[];
 };

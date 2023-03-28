@@ -1,11 +1,11 @@
-import { FilmsItemModel } from '../../models/FilmsItemModel';
+import { FilmsItemModel } from "../../models/FilmsItemModel";
 
 export const initialFilmsState = {
     data: {
         total: 0,
         totalPages: 0,
-        items: [] as FilmsItemModel[],
+        items: [] as FilmsItemModel[]
     },
     isLoading: false,
-    page: 1,
+    currentPage: 1
 };

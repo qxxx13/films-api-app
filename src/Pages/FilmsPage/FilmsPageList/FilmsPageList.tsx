@@ -1,20 +1,20 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import { useAppSelector } from '../../store/hooks';
-import { FilmItem } from './FilmItem/FilmItem';
-import { getIsLoading } from './../../store/filmsData/filmsDataReducer';
 import { useCallback } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import { BestFilmsItemModel } from '../../models/BestFilmsItemModel';
+import { getIsLoading } from '../../../store/filmsData/filmsDataReducer';
+import { FilmPageItem } from './FilmPageItem';
+import { useAppSelector } from '../../../store/hooks';
+import { FilmsItemModel } from '../../../models/FilmsItemModel';
 
 type FilmsListProps = {
-    films: BestFilmsItemModel[];
+    films: FilmsItemModel[];
 };
 
-export const FilmsList: React.FC<FilmsListProps> = (props) => {
+export const FilmsPageList: React.FC<FilmsListProps> = (props) => {
     const isLoading = useAppSelector(getIsLoading);
 
-    const setFilmsList = useCallback(() => props.films.map(film => <FilmItem film={film} key={film.filmId} />), [props.films]);
+    const setFilmsList = useCallback(() => props.films.map(film => <FilmPageItem film={film} key={film.kinopoiskId} />), [props.films]);
 
     return (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
