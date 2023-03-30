@@ -32,9 +32,9 @@ export const FilmsPage: React.FC = () => {
         <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', maxWidth: 1200, margin: '0 auto', maxHeight: 'calc(100vh - 64px)' }}>
             <Scrollbars style={{ height: '100vh' }}>
                 {totalPages ?
-                    <Pagination count={totalPages} sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }} onChange={onChange} page={currentPage} />
+                    <Pagination count={totalPages} sx={{ display: 'flex', justifyContent: 'center', mt: 2 }} onChange={onChange} page={currentPage} />
                     :
-                    <Skeleton variant="rectangular" width={'100%'} height={45} />
+                    <Skeleton variant="rectangular" width={'100%'} height={45} sx={{ mt: 2 }} />
                 }
                 <FilmsPageList films={films} />
             </Scrollbars>

@@ -34,7 +34,7 @@ export const BestFilmsPage: React.FC = () => {
                 {totalPages ?
                     <Pagination count={totalPages} sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }} onChange={onChange} page={page} />
                     :
-                    <Skeleton variant="rectangular" width={'100%'} height={45} />
+                    <Skeleton variant="rectangular" width={'100%'} height={45} sx={{ mt: 2 }} />
                 }
                 <FilmsList films={films} />
             </Scrollbars>

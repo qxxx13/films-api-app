@@ -29,7 +29,7 @@ export const FilmsItemPage: React.FC = () => {
             </Stack>
             <Stack>
                 <Paper>
-                    <Typography variant='h2' gutterBottom>{film?.nameOriginal}</Typography>
+                    <Typography variant='h2' gutterBottom>{film?.nameRu || film?.nameEn || film?.nameOriginal}</Typography>
                     <Typography variant='body1' gutterBottom>{film?.description}</Typography>
                 </Paper>
 

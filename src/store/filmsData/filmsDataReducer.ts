@@ -9,9 +9,6 @@ const filmsSLice = createSlice({
     name: "filmsData",
     initialState: initialFilmsState,
     reducers: {
-        setIsLoading: (state, action: PayloadAction<boolean>) => {
-            state.isLoading = action.payload;
-        },
         setFilmsCurrentPage: (state, action: PayloadAction<number>) => {
             state.currentPage = action.payload;
         },
@@ -24,13 +21,12 @@ const filmsSLice = createSlice({
     }
 });
 
-export const { setIsLoading, setFilmsCurrentPage, clearFilms, setFilmsData } = filmsSLice.actions;
+export const { setFilmsCurrentPage, clearFilms, setFilmsData } = filmsSLice.actions;
 
 //? Selectors
 export const getData = (store: RootStoreType): FilmsModel => store.filmsData.data;
 export const getFilms = (store: RootStoreType): FilmsItemModel[] => store.filmsData.data.items;
 export const getFilmsCurrentPage = (store: RootStoreType): number => store.filmsData.currentPage;
 export const getTotalPage = (store: RootStoreType): number => store.filmsData.data.totalPages;
-export const getIsLoading = (store: RootStoreType): boolean => store.filmsData.isLoading;
 
 export default filmsSLice.reducer;

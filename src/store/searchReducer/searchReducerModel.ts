@@ -1,8 +1,11 @@
 import { BestFilmsItemModel } from "../../models/BestFilmsItemModel";
 
 export const initialSearchState = {
-    keyWords: "",
-    films: [] as BestFilmsItemModel[],
-    pagesCount: 1,
+    data: {
+        keyword: "",
+        pagesCount: 1,
+        searchFilmsCountResult: 1,
+        films: [] as BestFilmsItemModel[]
+    },
     currentPage: 1
 };

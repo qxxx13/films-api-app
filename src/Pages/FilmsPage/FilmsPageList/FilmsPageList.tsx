@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { FilmsItemModel } from '../../../models/FilmsItemModel';
-import { getIsLoading } from '../../../store/filmsData/filmsDataReducer';
+import { getIsLoading } from '../../../store/appReducer/appReducer';
 import { useAppSelector } from '../../../store/hooks';
 import { FilmPageItem } from './FilmPageItem';
 

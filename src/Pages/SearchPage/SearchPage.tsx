@@ -48,7 +48,9 @@ export const SearchPage: React.FC = () => {
         updateFilms();
     };
 
-
+    const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        e.code === 'Enter' && onClick();
+    };
 
     return (
         <Stack sx={{ m: '0 auto', maxWidth: 1200, maxHeight: 'calc(100vh - 64px)' }}>
@@ -59,6 +61,7 @@ export const SearchPage: React.FC = () => {
                 value={searchValue}
                 onChange={onChange}
                 sx={{ mt: 2 }}
+                onKeyDown={onKeyDown}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position='end'>

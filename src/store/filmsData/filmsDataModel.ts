@@ -6,6 +6,5 @@ export const initialFilmsState = {
         totalPages: 0,
         items: [] as FilmsItemModel[]
     },
-    isLoading: false,
     currentPage: 1
 };

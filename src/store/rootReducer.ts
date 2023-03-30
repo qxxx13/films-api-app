@@ -1,5 +1,7 @@
 import { CombinedState, combineReducers, Reducer } from "redux";
 
+import appReducer from "./appReducer/appReducer";
+import { initialAppState } from "./appReducer/appReducerModel";
 import { initialBestFilmsState } from "./bestFilmsData/bestFilmsDataModel";
 import bestFilmsDataReducer from "./bestFilmsData/bestFilmsDataReducer";
 import { initialCurrentFilmState } from "./currentFilmData/currentFilmDataModel";
@@ -10,6 +12,7 @@ import searchReducer from "./searchReducer/searchReducer";
 import { initialSearchState } from "./searchReducer/searchReducerModel";
 
 export const initialState = {
+    appReducer: initialAppState,
     filmsData: initialFilmsState,
     bestFilmsData: initialBestFilmsState,
     search: initialSearchState,
@@ -23,5 +26,6 @@ export const createRootReducer = (): Reducer<CombinedState<RootStoreType>> =>
         filmsData: filmsDataReducer,
         bestFilmsData: bestFilmsDataReducer,
         search: searchReducer,
-        currentFilmData: currentFilmReducer
+        currentFilmData: currentFilmReducer,
+        appReducer: appReducer
     });
