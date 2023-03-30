@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import Box from '@mui/material/Box';
-import { FilmsList } from '../../components/FilmsList/FilmsList';
-import { useAppDispatch, useAppSelector } from './../../store/hooks';
-import { loadBestFilms } from './../../sagas/filmsSagaActions';
 import { useCallback } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
-import { Pagination, Skeleton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { Pagination, Skeleton } from '@mui/material';
+import Box from '@mui/material/Box';
+
+import { loadBestFilms } from './../../sagas/filmsSagaActions';
 import { clearBestFilms, getBestFilms, getBestFilmsCurentPage, getBestFilmsPagesCount, setBestFilmsCurentPage } from './../../store/bestFilmsData/bestFilmsDataReducer';
+import { useAppDispatch, useAppSelector } from './../../store/hooks';
+import { FilmsList } from '../../components/FilmsList/FilmsList';
 
 export const BestFilmsPage: React.FC = () => {
     const dispatch = useAppDispatch();

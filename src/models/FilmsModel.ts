@@ -1,4 +1,4 @@
-import { FilmsItemModel } from './FilmsItemModel';
+import { FilmsItemModel } from "./FilmsItemModel";
 
 export type FilmsModel = {
     total: number;

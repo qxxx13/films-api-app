@@ -1,11 +1,12 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import { useAppSelector } from '../../store/hooks';
-import { FilmItem } from './FilmItem/FilmItem';
-import { getIsLoading } from './../../store/filmsData/filmsDataReducer';
 import { useCallback } from 'react';
+import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
+
+import { getIsLoading } from './../../store/filmsData/filmsDataReducer';
+import { FilmItem } from './FilmItem/FilmItem';
 import { BestFilmsItemModel } from '../../models/BestFilmsItemModel';
+import { useAppSelector } from '../../store/hooks';
 
 type FilmsListProps = {
     films: BestFilmsItemModel[];

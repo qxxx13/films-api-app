@@ -1,7 +1,8 @@
 import React from 'react';
-import Card from '@mui/material/Card';
-import { CardActionArea, CardMedia, CardContent, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import Card from '@mui/material/Card';
+
 import { BestFilmsItemModel } from '../../../models/BestFilmsItemModel';
 
 export type FilmItemProps = {

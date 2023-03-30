@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { ParticlesBackground } from './common/ParticlesBackground/ParticlesBackground';
 import { NavBar } from './components/NavBar/NavBar';
 import { Router } from './router/Router';

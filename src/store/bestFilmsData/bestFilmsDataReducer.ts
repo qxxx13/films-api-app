@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { initialBestFilmsState } from "./bestFilmsDataModel";
+
 import { BestFilmsItemModel } from "../../models/BestFilmsItemModel";
 import { RootStoreType } from "../rootReducer";
+import { initialBestFilmsState } from "./bestFilmsDataModel";
 
 const bestFilmsSlice = createSlice({
     name: "bestFilmsData",
