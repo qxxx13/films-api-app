@@ -4,6 +4,7 @@ import { BestFilmsModel } from "../models/BestFilmsModel";
 import { FilmsByKeyWordsModel } from "../models/FilmsByKeyWordsModel";
 import { FilmsItemModel } from "../models/FilmsItemModel";
 import { FilmsModel } from "../models/FilmsModel";
+import { FiltersModel } from "../models/FiltersModel";
 
 const instance = axios.create({
     baseURL: "https://kinopoiskapiunofficial.tech/api/",
@@ -15,8 +16,15 @@ const instance = axios.create({
     }
 });
 
-export const fetchFilmsFromApi = (pageId: number): Promise<AxiosResponse<FilmsModel>> => {
-    const response = instance.get(`v2.2/films?page=${pageId}`).then((res) => res.data);
+export const fetchFilmsByGenresFromApi = (
+    pageId: number,
+    filters: FiltersModel
+): Promise<AxiosResponse<FilmsModel>> => {
+    const response = instance
+        .get(
+            `v2.2/films?order=${filters.order}&type=${filters.type}&ratingFrom=${filters.ratingFrom}&ratingTo=${filters.ratingTo}&page=${pageId}`
+        )
+        .then((res) => res.data);
     return response;
 };
 

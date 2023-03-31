@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars-2';
 import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
-import { IconButton, InputAdornment, Pagination, Stack, TextField } from '@mui/material';
+import { IconButton, InputAdornment, Pagination, Stack, TextField, Typography } from '@mui/material';
 
 import { loadFilmsByKeyWords } from './../../sagas/filmsSagaActions';
 import { useAppDispatch, useAppSelector } from './../../store/hooks';

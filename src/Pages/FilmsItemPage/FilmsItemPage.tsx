@@ -28,11 +28,11 @@ export const FilmsItemPage: React.FC = () => {
                 <img src={film?.posterUrl} alt='123' style={{ width: 425, height: 637 }} />
             </Stack>
             <Stack>
-                <Paper>
+                <Paper sx={{ padding: 3 }}>
                     <Typography variant='h2' gutterBottom>{film?.nameRu || film?.nameEn || film?.nameOriginal}</Typography>
                     <Typography variant='body1' gutterBottom>{film?.description}</Typography>
+                    <Typography variant='body1' gutterBottom>{film?.type}</Typography>
                 </Paper>
-
             </Stack>
         </Stack>
     );

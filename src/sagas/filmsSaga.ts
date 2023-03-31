@@ -6,11 +6,12 @@ import { BestFilmsModel } from "../models/BestFilmsModel";
 import { FilmsByKeyWordsModel } from "../models/FilmsByKeyWordsModel";
 import { FilmsItemModel } from "../models/FilmsItemModel";
 import { FilmsModel } from "../models/FilmsModel";
-import { fetchBestFilmsFromApi, fetchFilmById, fetchFilmsFromApi } from "../services/api";
+import { FiltersModel } from "../models/FiltersModel";
+import { fetchBestFilmsFromApi, fetchFilmById, fetchFilmsByGenresFromApi } from "../services/api";
 import { setIsLoading } from "../store/appReducer/appReducer";
 import { setBestFilmsData } from "../store/bestFilmsData/bestFilmsDataReducer";
 import { setFilmById } from "../store/currentFilmData/currentFilmReducer";
-import { setFilmsData } from "../store/filmsData/filmsDataReducer";
+import { getFilters, setFilmsData } from "../store/filmsByGenresData/filmsByGenresDataReducer";
 import { getKeyWords, setFilmsByKeyWordsData } from "../store/searchReducer/searchReducer";
 import { loadBestFilms, loadFilmById, loadFilms, loadFilmsByKeyWords } from "./filmsSagaActions";
 
@@ -24,7 +25,8 @@ export const filmsSaga = [
 function* fetchFilmsWorker(action: PayloadAction<number>): Generator {
     try {
         yield put(setIsLoading(true));
-        const data = (yield call(fetchFilmsFromApi, action.payload)) as FilmsModel;
+        const filters = (yield select(getFilters)) as FiltersModel;
+        const data = (yield call(fetchFilmsByGenresFromApi, action.payload, filters)) as FilmsModel;
         yield put(setFilmsData(data));
         yield put(setIsLoading(false));
     } catch (error) {
