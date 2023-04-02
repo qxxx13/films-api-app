@@ -5,8 +5,8 @@ import { Stack, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 
 import { useAppDispatch, useAppSelector } from './../../store/hooks';
-import { loadFilmById } from '../../sagas/filmsSagaActions';
 import { clearFilmById, getFilmById } from '../../store/currentFilmData/currentFilmReducer';
+import { loadFilmById } from '../../store/sagas/filmsSagaActions';
 
 export const FilmsItemPage: React.FC = () => {
     const { id } = useParams();

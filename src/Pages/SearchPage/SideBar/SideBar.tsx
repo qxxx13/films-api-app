@@ -3,14 +3,13 @@ import { useCallback } from 'react';
 import { Button, Slider, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
-import Paper from '@mui/material/Paper';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
 
-import { loadFilms } from './../../../sagas/filmsSagaActions';
-import { useAppDispatch } from './../../../store/hooks';
-import { getFilters, setOrder, setRatingFrom, setRatingTo, setType } from '../../../store/filmsByGenresData/filmsByGenresDataReducer';
+import { getFilters, setFilmsCurrentPage, setOrder, setRatingFrom, setRatingTo, setType } from '../../../store/filmsData/filmsDataReducer';
+import { useAppDispatch } from '../../../store/hooks';
 import { useAppSelector } from '../../../store/hooks';
+import { loadFilms } from '../../../store/sagas/filmsSagaActions';
 
 
 export const SideBar: React.FC = () => {
@@ -24,8 +23,13 @@ export const SideBar: React.FC = () => {
 
     const updateFilms = useCallback(() => dispatch(loadFilms(1)), [dispatch]);
 
+    const onClick = () => {
+        dispatch(setFilmsCurrentPage(1));
+        updateFilms();
+    };
+
     return (
-        <Paper sx={{ m: 2, padding: 3 }}>
+        <Box sx={{ m: 2, maxWidth: '100%' }}>
             <Box sx={{ display: 'flex' }}>
                 <Select label='Сортировать по' value={filters.order} onChange={(order) => updateOrder(order)} sx={{ width: '100%' }}>
                     <MenuItem value={'RATING'}>RATING</MenuItem>
@@ -41,14 +45,14 @@ export const SideBar: React.FC = () => {
                 </Select>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 2, flexDirection: 'column' }}>
-                <Typography>Минимальный рейтинг</Typography>
+                <Typography color='primary'>Минимальный рейтинг</Typography>
                 <Slider step={1} min={1} max={10} marks valueLabelDisplay='auto' value={filters.ratingFrom} onChange={(event: Event, newValue: number | number[]) => updateRatingFrom(newValue)} />
-                <Typography sx={{ ml: 3 }}>Максимальный рейтинг</Typography>
+                <Typography color='primary'>Максимальный рейтинг</Typography>
                 <Slider step={1} min={1} max={10} marks valueLabelDisplay='auto' value={filters.ratingTo} onChange={(event: Event, newValue: number | number[]) => updateRatingTo(newValue)} />
             </Box>
             <Stack>
-                <Button sx={{ mt: 2 }} variant='outlined' onClick={updateFilms}>Сортировать</Button>
+                <Button sx={{ mt: 2 }} variant='outlined' onClick={onClick}>Сортировать</Button>
             </Stack>
-        </Paper>
+        </Box>
     );
 };

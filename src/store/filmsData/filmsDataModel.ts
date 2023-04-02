@@ -1,6 +1,6 @@
 import { FilmsItemModel } from "../../models/FilmsItemModel";
 
-export const initialFilmsByGenresState = {
+export const initialFilmsState = {
     data: {
         total: 0,
         totalPages: 0,
@@ -10,7 +10,8 @@ export const initialFilmsByGenresState = {
         order: "RATING",
         type: "ALL",
         ratingFrom: 1,
-        ratingTo: 10
+        ratingTo: 10,
+        keyWords: ""
     },
     currentPage: 1
 };

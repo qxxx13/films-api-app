@@ -3,17 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import { CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import Card from '@mui/material/Card';
 
-import { BestFilmsItemModel } from '../../../models/BestFilmsItemModel';
-
 export type FilmItemProps = {
-    film: BestFilmsItemModel;
+    film: {
+        id: number,
+        posterUrl: string,
+        nameRu: string,
+        nameEn: string,
+        year: string;
+    };
 };
 
 
 
 export const FilmListItem: React.FC<FilmItemProps> = (props) => {
     const navigate = useNavigate();
-    return <Card sx={{ width: 250, marginTop: 4 }} key={props.film.filmId} onClick={() => navigate(`/films/${props.film.filmId}`)}>
+    return <Card sx={{ width: 250, marginTop: 4 }} key={props.film.id} onClick={() => navigate(`/films/${props.film.id}`)}>
         <CardActionArea sx={{ height: '100%' }}>
             <CardMedia
                 component='img'

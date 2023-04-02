@@ -4,11 +4,11 @@ import { FilmsItemModel } from "../../models/FilmsItemModel";
 import { FilmsModel } from "../../models/FilmsModel";
 import { FiltersModel } from "../../models/FiltersModel";
 import { RootStoreType } from "../rootReducer";
-import { initialFilmsByGenresState } from "./filmsByGenresDataModel";
+import { initialFilmsState } from "./filmsDataModel";
 
 const filmsSLice = createSlice({
     name: "filmsData",
-    initialState: initialFilmsByGenresState,
+    initialState: initialFilmsState,
     reducers: {
         setFilmsCurrentPage: (state, action: PayloadAction<number>) => {
             state.currentPage = action.payload;
@@ -28,20 +28,21 @@ const filmsSLice = createSlice({
         setRatingTo: (state, action: PayloadAction<number>) => {
             state.filters.ratingTo = action.payload;
         },
-        clearFilms: (state) => {
-            state.data.items = [];
+        setKeyWords: (state, action: PayloadAction<string>) => {
+            state.filters.keyWords = action.payload;
         }
     }
 });
 
-export const { setFilmsCurrentPage, clearFilms, setFilmsData, setOrder, setRatingFrom, setRatingTo, setType } =
+export const { setKeyWords, setFilmsCurrentPage, setFilmsData, setOrder, setRatingFrom, setRatingTo, setType } =
     filmsSLice.actions;
 
 //? Selectors
-export const getData = (store: RootStoreType): FilmsModel => store.filmsByGenresData.data;
-export const getFilms = (store: RootStoreType): FilmsItemModel[] => store.filmsByGenresData.data.items;
-export const getFilmsCurrentPage = (store: RootStoreType): number => store.filmsByGenresData.currentPage;
-export const getTotalPage = (store: RootStoreType): number => store.filmsByGenresData.data.totalPages;
-export const getFilters = (store: RootStoreType): FiltersModel => store.filmsByGenresData.filters;
+export const getData = (store: RootStoreType): FilmsModel => store.filmsData.data;
+export const getFilms = (store: RootStoreType): FilmsItemModel[] => store.filmsData.data.items;
+export const getFilmsCurrentPage = (store: RootStoreType): number => store.filmsData.currentPage;
+export const getTotalPage = (store: RootStoreType): number => store.filmsData.data.totalPages;
+export const getFilters = (store: RootStoreType): FiltersModel => store.filmsData.filters;
+export const getKeyWords = (store: RootStoreType): string => store.filmsData.filters.keyWords;
 
 export default filmsSLice.reducer;

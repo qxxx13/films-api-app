@@ -5,17 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import { Pagination, Skeleton } from '@mui/material';
 import Box from '@mui/material/Box';
 
-import { loadBestFilms } from './../../sagas/filmsSagaActions';
-import { clearBestFilms, getBestFilms, getBestFilmsCurentPage, getBestFilmsPagesCount, setBestFilmsCurentPage } from './../../store/bestFilmsData/bestFilmsDataReducer';
+import { getBestFilmsCurentPage, getBestFilmsPagesCount, setBestFilmsCurentPage } from './../../store/bestFilmsData/bestFilmsDataReducer';
 import { useAppDispatch, useAppSelector } from './../../store/hooks';
 import { FilmsList } from '../../components/FilmsList/FilmsList';
+import { loadBestFilms } from '../../store/sagas/filmsSagaActions';
+import { getBestFilmsForList } from '../../store/selectors/filmsSelector';
 
 export const BestFilmsPage: React.FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const page = useAppSelector(getBestFilmsCurentPage);
     const totalPages = useAppSelector(getBestFilmsPagesCount);
-    const films = useAppSelector(getBestFilms);
+    const films = useAppSelector(getBestFilmsForList);
     const onChange = (event: React.ChangeEvent<unknown>, page: number) => {
         navigate(`/bestfilms/page/${page}`);
         dispatch(setBestFilmsCurentPage(page));
@@ -24,7 +25,6 @@ export const BestFilmsPage: React.FC = () => {
     const updateFilms = useCallback(() => dispatch(loadBestFilms(page)), [dispatch, page]);
 
     useEffect(() => {
-        dispatch(clearBestFilms());
         updateFilms();
     }, [updateFilms, dispatch]);
 

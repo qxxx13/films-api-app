@@ -3,4 +3,5 @@ export type FiltersModel = {
     type: string;
     ratingFrom: number;
     ratingTo: number;
+    keyWords: string;
 };

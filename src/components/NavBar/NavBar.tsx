@@ -22,7 +22,6 @@ export const NavBar: React.FC = () => {
                     <Box sx={{ borderColor: 'divider' }}>
                         <Tabs value={value} onChange={onChange}>
                             <Tab value='1' label='SEARCH' onClick={() => navigate(`/`)} />
-                            <Tab value='2' label='FILMS BY GENRES' onClick={() => navigate(`films/page/1`)} />
                             <Tab value='3' label='BEST FILMS' onClick={() => navigate('bestfilms/page/1')} />
                         </Tabs>
                     </Box>
