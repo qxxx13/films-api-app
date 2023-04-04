@@ -73,7 +73,6 @@ export const SearchPage: React.FC = () => {
                         ),
                     }}
                 />
-
                 <Scrollbars style={{ height: '100vh' }}>
                     {films.length > 0 ?
                         <>
@@ -83,7 +82,6 @@ export const SearchPage: React.FC = () => {
                         :
                         <Typography variant='h2' sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>404</Typography>
                     }
-
                 </Scrollbars>
             </Stack>
         </Stack>
