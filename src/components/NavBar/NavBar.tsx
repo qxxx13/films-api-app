@@ -15,14 +15,15 @@ export const NavBar: React.FC = () => {
     const onChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
     };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position='static' sx={{ bgcolor: 'transparent' }}>
-                <Toolbar sx={{ display: 'flex', justifyContent: 'center', padding: 0 }}>
+            <AppBar position='static' sx={{ backgroundImage: 'none', backgroundColor: '#071429' }}>
+                <Toolbar sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box sx={{ borderColor: 'divider' }}>
                         <Tabs value={value} onChange={onChange}>
-                            <Tab value='1' label='SEARCH' onClick={() => navigate(`/`)} />
-                            <Tab value='3' label='BEST FILMS' onClick={() => navigate('bestfilms/page/1')} />
+                            <Tab value='1' label='Поиск' onClick={() => navigate(`/`)} />
+                            <Tab value='3' label='Лучшие фильмы' onClick={() => navigate('bestfilms')} />
                         </Tabs>
                     </Box>
                 </Toolbar>

@@ -36,3 +36,9 @@ export const fetchFilmById = (filmId: string): Promise<AxiosResponse<FilmsItemMo
     const response = instance.get(`v2.2/films/${filmId}`).then((res) => res.data);
     return response;
 };
+
+/* X-API-KEYS
+23271c7c-c325-49b1-9827-8ce970583d5d
+84c363cf-3c24-4ae8-9baf-f64395a672a8
+64537635-d655-4ddb-9df4-c481e696dabf
+*/

@@ -1,5 +1,4 @@
-import React from 'react';
-import { useCallback } from 'react';
+import React, { useMemo } from 'react';
 import { Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -16,17 +15,18 @@ type FilmsListProps = {
         nameEn: string,
         year: string;
     }[];
+    gap: number;
 };
 
 export const FilmsList: React.FC<FilmsListProps> = (props) => {
+
     const isLoading = useAppSelector(getIsLoading);
 
-    const setFilmsList = useCallback(() => props.films.map(film => <FilmListItem film={film} key={film.id} />), [props.films]);
-
+    const FilmsList = useMemo(() => props.films.map(film => <FilmListItem film={film} key={film.id} />), [props.films]);
     return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', m: 2 }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', rowGap: 5, columnGap: props.gap, }}>
             {!isLoading ?
-                setFilmsList()
+                FilmsList
                 :
                 <Stack sx={{ width: '100%' }} alignItems='center'>
                     <CircularProgress color='secondary' sx={{ mt: 2 }} />

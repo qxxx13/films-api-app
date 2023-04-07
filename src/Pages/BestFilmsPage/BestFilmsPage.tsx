@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useCallback } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
-import { useNavigate } from 'react-router-dom';
 import { Pagination, Skeleton } from '@mui/material';
 import Box from '@mui/material/Box';
 
@@ -13,12 +12,12 @@ import { getBestFilmsForList } from '../../store/selectors/filmsSelector';
 
 export const BestFilmsPage: React.FC = () => {
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
+
     const page = useAppSelector(getBestFilmsCurentPage);
     const totalPages = useAppSelector(getBestFilmsPagesCount);
     const films = useAppSelector(getBestFilmsForList);
-    const onChange = (event: React.ChangeEvent<unknown>, page: number) => {
-        navigate(`/bestfilms/page/${page}`);
+
+    const onPaginationChange = (event: React.ChangeEvent<unknown>, page: number) => {
         dispatch(setBestFilmsCurentPage(page));
     };
 
@@ -29,14 +28,14 @@ export const BestFilmsPage: React.FC = () => {
     }, [updateFilms, dispatch]);
 
     return (
-        <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', maxWidth: 1200, margin: '0 auto', maxHeight: 'calc(100vh - 64px)' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', maxWidth: 1200, m: '0 auto', maxHeight: 'calc(100vh - 64px)' }}>
+            {totalPages ?
+                <Pagination count={totalPages} sx={{ display: 'flex', justifyContent: 'center', m: '16px 0 16px 0' }} onChange={onPaginationChange} page={page} />
+                :
+                <Skeleton variant="rectangular" width={'100%'} height={45} sx={{ mt: 2 }} />
+            }
             <Scrollbars style={{ height: '100vh' }}>
-                {totalPages ?
-                    <Pagination count={totalPages} sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }} onChange={onChange} page={page} />
-                    :
-                    <Skeleton variant="rectangular" width={'100%'} height={45} sx={{ mt: 2 }} />
-                }
-                <FilmsList films={films} />
+                <FilmsList films={films} gap={7.5} />
             </Scrollbars>
         </Box>
     );
