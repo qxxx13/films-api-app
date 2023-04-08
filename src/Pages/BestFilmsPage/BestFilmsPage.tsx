@@ -25,7 +25,7 @@ export const BestFilmsPage: React.FC = () => {
 
     useEffect(() => {
         updateFilms();
-    }, [updateFilms, dispatch]);
+    }, [updateFilms]);
 
     return (
         <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', maxWidth: 1200, m: '0 auto', maxHeight: 'calc(100vh - 64px)' }}>
@@ -35,7 +35,7 @@ export const BestFilmsPage: React.FC = () => {
                 <Skeleton variant="rectangular" width={'100%'} height={45} sx={{ mt: 2 }} />
             }
             <Scrollbars style={{ height: '100vh' }}>
-                <FilmsList films={films} gap={7.5} />
+                <FilmsList films={films} gap={7} />
             </Scrollbars>
         </Box>
     );

@@ -37,7 +37,7 @@ export const SearchPage: React.FC = () => {
 
     useEffect(() => {
         updateFilms();
-    }, [dispatch, updateFilms]);
+    }, [updateFilms]);
 
     const onSearch = () => {
         dispatch(setFilmsCurrentPage(1));
@@ -71,13 +71,13 @@ export const SearchPage: React.FC = () => {
                         ),
                     }}
                 />
-                <Pagination count={totalPage} sx={{ display: 'flex', justifyContent: 'center', m: '16px 0 16px 0' }} onChange={onPaginationChange} page={currentPage} />
+                <Pagination count={totalPage} sx={{ display: 'flex', justifyContent: 'center', m: '16px 0 25px 0' }} onChange={onPaginationChange} page={currentPage} />
                 <Scrollbars style={{ height: '100vh' }}>
                     {films.length < 1 && !isLoading
                         ?
                         <Typography color="textPrimary" variant='h3' sx={{ display: 'flex', justifyContent: 'center' }}>По вашему запросу ничего не найдено</Typography>
                         :
-                        <FilmsList films={films} gap={14.5} />
+                        <FilmsList films={films} gap={14} />
                     }
                 </Scrollbars>
             </Stack>

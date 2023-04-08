@@ -22,7 +22,7 @@ export const NavBar: React.FC = () => {
                 <Toolbar sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box sx={{ borderColor: 'divider' }}>
                         <Tabs value={value} onChange={onChange}>
-                            <Tab value='1' label='Поиск' onClick={() => navigate(`/`)} />
+                            <Tab value='1' label='Поиск' onClick={() => navigate(`films-api-app`)} />
                             <Tab value='3' label='Лучшие фильмы' onClick={() => navigate('bestfilms')} />
                         </Tabs>
                     </Box>

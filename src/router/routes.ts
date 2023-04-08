@@ -1,5 +1,5 @@
 export const routes = {
-    root: "/",
-    bestFilms: "/bestfilms",
-    filmsItem: "/films/:id"
+    root: "/films-api-app",
+    bestFilms: "bestfilms",
+    filmsItem: "films/:id"
 };

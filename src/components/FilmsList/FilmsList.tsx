@@ -24,7 +24,7 @@ export const FilmsList: React.FC<FilmsListProps> = (props) => {
 
     const FilmsList = useMemo(() => props.films.map(film => <FilmListItem film={film} key={film.id} />), [props.films]);
     return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', rowGap: 5, columnGap: props.gap, }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', rowGap: 5, columnGap: props.gap, m: 1 }}>
             {!isLoading ?
                 FilmsList
                 :

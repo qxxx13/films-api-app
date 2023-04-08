@@ -7,7 +7,6 @@ type FilmsItemInfoProps = {
 };
 
 export const FilmsItemInfo: React.FC<FilmsItemInfoProps> = ({ keyName, value }) => {
-    console.log(keyName, value);
     return (
         <Stack flexDirection='row' sx={{ mt: 1 }}>
             <Typography variant='body2'>{keyName}</Typography>

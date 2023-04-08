@@ -23,7 +23,7 @@ export const FilmsItemPage: React.FC = () => {
     useEffect(() => {
         dispatch(clearFilmById());
         updateFilm();
-    }, []);
+    }, [dispatch, updateFilm]);
 
     //? Обернуть в useMemo (но чтобы проверялось условие !isLoading)
     const filmInfo = () => {
