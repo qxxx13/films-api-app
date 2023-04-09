@@ -15,7 +15,7 @@ export type FilmItemProps = {
 
 export const FilmListItem: React.FC<FilmItemProps> = (props) => {
     const navigate = useNavigate();
-    return <Card sx={{ width: 250 }} key={props.film.id} onClick={() => navigate(`/films/${props.film.id}`)}>
+    return <Card sx={{ width: 250 }} key={props.film.id} onClick={() => navigate(`/films/${props.film.id}`)} elevation={5}>
         <CardActionArea sx={{ height: '100%' }}>
             {!!props.film.posterUrl ?
                 <CardMedia

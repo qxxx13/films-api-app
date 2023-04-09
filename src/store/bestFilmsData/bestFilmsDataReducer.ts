@@ -12,17 +12,17 @@ const bestFilmsSlice = createSlice({
         setBestFilmsData: (state, action: PayloadAction<BestFilmsModel>) => {
             state.data = action.payload;
         },
-        setBestFilmsCurentPage: (state, action: PayloadAction<number>) => {
+        setBestFilmsCurrentPage: (state, action: PayloadAction<number>) => {
             state.currentPage = action.payload;
         }
     }
 });
 
-export const { setBestFilmsCurentPage, setBestFilmsData } = bestFilmsSlice.actions;
+export const { setBestFilmsCurrentPage, setBestFilmsData } = bestFilmsSlice.actions;
 
 //? Selectors
 export const getBestFilms = (store: RootStoreType): BestFilmsItemModel[] => store.bestFilmsData.data.films;
 export const getBestFilmsPagesCount = (store: RootStoreType): number => store.bestFilmsData.data.pagesCount;
-export const getBestFilmsCurentPage = (store: RootStoreType): number => store.bestFilmsData.currentPage;
+export const getBestFilmsCurrentPage = (store: RootStoreType): number => store.bestFilmsData.currentPage;
 
 export default bestFilmsSlice.reducer;

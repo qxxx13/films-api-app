@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 
-import { FilmsItemPage } from './../pages/FilmsItemPage/FilmsItemPage';
-import { BestFilmsPage } from '../pages/BestFilmsPage/BestFilmsPage';
-import { SearchPage } from "../pages/SearchPage/SearchPage";
+import { FilmsItemPage } from './../Pages/FilmsItemPage/FilmsItemPage';
+import { BestFilmsPage } from '../Pages/BestFilmsPage/BestFilmsPage';
+import { SearchPage } from "../Pages/SearchPage/SearchPage";
 import { routes } from './routes';
 
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars-2';
+import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { IconButton, InputAdornment, Pagination, Stack, TextField, Typography } from '@mui/material';
+import { Drawer, IconButton, InputAdornment, Pagination, Stack, TextField, Typography } from '@mui/material';
 
 import { useAppDispatch, useAppSelector } from './../../store/hooks';
 import { SideBar } from './SideBar/SideBar';
@@ -23,6 +24,7 @@ export const SearchPage: React.FC = () => {
     const isLoading = useAppSelector(getIsLoading);
 
     const [searchValue, setSearchValue] = useState<string>(keyWords);
+    const [openMenu, setOpenMenu] = useState(false);
 
     const updateSearch = useCallback(() => dispatch(setKeyWords(searchValue)), [dispatch, searchValue]);
     const updateFilms = useCallback(() => dispatch(loadFilms(currentPage)), [dispatch, currentPage]);
@@ -51,7 +53,6 @@ export const SearchPage: React.FC = () => {
 
     return (
         <Stack direction='row' sx={{ m: '0 auto', maxWidth: 1200, maxHeight: 'calc(100vh - 64px)' }}>
-            <SideBar />
             <Stack direction='column' sx={{ width: '100%' }}>
                 <TextField
                     id="search"
@@ -59,25 +60,35 @@ export const SearchPage: React.FC = () => {
                     variant="outlined"
                     value={searchValue}
                     onChange={onSearchChange}
-                    sx={{ mt: 2 }}
+                    sx={{ m: '16px 16px 0 16px' }}
                     onKeyDown={onKeyDown}
                     InputProps={{
+                        startAdornment: (
+                            <InputAdornment position='start'>
+                                <IconButton onClick={() => setOpenMenu(true)}>
+                                    <MenuIcon />
+                                </IconButton>
+                                <Drawer open={openMenu} onClose={() => setOpenMenu(false)}>
+                                    <SideBar />
+                                </Drawer>
+                            </InputAdornment>
+                        ),
                         endAdornment: (
                             <InputAdornment position='end'>
                                 <IconButton onClick={onSearch}>
                                     <SearchIcon />
                                 </IconButton>
                             </InputAdornment>
-                        ),
+                        )
                     }}
                 />
-                <Pagination count={totalPage} sx={{ display: 'flex', justifyContent: 'center', m: '16px 0 25px 0' }} onChange={onPaginationChange} page={currentPage} />
+                <Pagination count={totalPage} sx={{ display: 'flex', justifyContent: 'center', m: '16px 0 16px 0' }} onChange={onPaginationChange} page={currentPage} />
                 <Scrollbars style={{ height: '100vh' }}>
                     {films.length < 1 && !isLoading
                         ?
                         <Typography color="textPrimary" variant='h3' sx={{ display: 'flex', justifyContent: 'center' }}>По вашему запросу ничего не найдено</Typography>
                         :
-                        <FilmsList films={films} gap={14} />
+                        <FilmsList films={films} />
                     }
                 </Scrollbars>
             </Stack>

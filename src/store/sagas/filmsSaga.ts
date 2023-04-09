@@ -5,7 +5,7 @@ import { BestFilmsModel } from "../../models/BestFilmsModel";
 import { FilmsItemModel } from "../../models/FilmsItemModel";
 import { FilmsModel } from "../../models/FilmsModel";
 import { FiltersModel } from "../../models/FiltersModel";
-import { fetchBestFilmsFromApi, fetchFilmById, fetchFilmsByGenresFromApi } from "../../services/api";
+import { fetchBestFilmsFromApi, fetchFilmById, fetchFilmsByGenresFromApi } from "../../services/apiService";
 import { setIsLoading } from "../appReducer/appReducer";
 import { setBestFilmsData } from "../bestFilmsData/bestFilmsDataReducer";
 import { setFilmById } from "../currentFilmData/currentFilmReducer";

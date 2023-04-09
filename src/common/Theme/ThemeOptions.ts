@@ -4,14 +4,14 @@ export const themeOptions = createTheme({
     palette: {
         mode: "dark",
         primary: {
-            main: "#077187"
+            main: "#00C8F1"
         },
         secondary: {
             main: "#ADCAD6"
         },
         background: {
             default: "#0C1B33",
-            paper: "#050e1c"
+            paper: "#011E4C"
         }
     }
 });

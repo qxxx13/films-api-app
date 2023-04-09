@@ -5,7 +5,7 @@ import { FilmsItemModel } from "../models/FilmsItemModel";
 import { FilmsModel } from "../models/FilmsModel";
 import { FiltersModel } from "../models/FiltersModel";
 
-const instance = axios.create({
+const axiosInstance = axios.create({
     baseURL: "https://kinopoiskapiunofficial.tech/api/",
     timeout: 10000,
     headers: {
@@ -19,26 +19,22 @@ export const fetchFilmsByGenresFromApi = (
     pageId: number,
     filters: FiltersModel
 ): Promise<AxiosResponse<FilmsModel>> => {
-    const response = instance
+    const filmsByGenres = axiosInstance
         .get(
             `v2.2/films?order=${filters.order}&type=${filters.type}&ratingFrom=${filters.ratingFrom}&ratingTo=${filters.ratingTo}&keyword=${filters.keyWords}&page=${pageId}`
         )
         .then((res) => res.data);
-    return response;
+    return filmsByGenres;
 };
 
 export const fetchBestFilmsFromApi = (pageId: number): Promise<AxiosResponse<BestFilmsModel>> => {
-    const response = instance.get(`v2.2/films/top?type=TOP_250_BEST_FILMS&page=${pageId}`).then((res) => res.data);
-    return response;
+    const bestFilms = axiosInstance
+        .get(`v2.2/films/top?type=TOP_250_BEST_FILMS&page=${pageId}`)
+        .then((res) => res.data);
+    return bestFilms;
 };
 
 export const fetchFilmById = (filmId: string): Promise<AxiosResponse<FilmsItemModel>> => {
-    const response = instance.get(`v2.2/films/${filmId}`).then((res) => res.data);
-    return response;
+    const filmById = axiosInstance.get(`v2.2/films/${filmId}`).then((res) => res.data);
+    return filmById;
 };
-
-/* X-API-KEYS
-23271c7c-c325-49b1-9827-8ce970583d5d
-84c363cf-3c24-4ae8-9baf-f64395a672a8
-64537635-d655-4ddb-9df4-c481e696dabf
-*/

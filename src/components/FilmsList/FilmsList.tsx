@@ -15,7 +15,6 @@ type FilmsListProps = {
         nameEn: string,
         year: string;
     }[];
-    gap: number;
 };
 
 export const FilmsList: React.FC<FilmsListProps> = (props) => {
@@ -24,7 +23,7 @@ export const FilmsList: React.FC<FilmsListProps> = (props) => {
 
     const FilmsList = useMemo(() => props.films.map(film => <FilmListItem film={film} key={film.id} />), [props.films]);
     return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', rowGap: 5, columnGap: props.gap, m: 1 }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', rowGap: 5, justifyContent: 'space-around' }}>
             {!isLoading ?
                 FilmsList
                 :
