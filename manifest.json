@@ -1,6 +1,6 @@
 {
     "short_name": "FilmsApp",
-    "name": "Films-api-app",
+    "name": "FilmsApp",
     "icons": [
         {
             "src": "favicon.ico",
@@ -20,6 +20,6 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
+    "theme_color": "#0C1B33",
+    "background_color": "#0C1B33"
 }
