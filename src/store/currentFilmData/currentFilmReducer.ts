@@ -10,14 +10,11 @@ const currentFilmSlice = createSlice({
     reducers: {
         setFilmById: (state, action: PayloadAction<FilmsItemModel>) => {
             state.data = action.payload;
-        },
-        clearFilmById: (state) => {
-            state.data = null as unknown as FilmsItemModel;
         }
     }
 });
 
-export const { setFilmById, clearFilmById } = currentFilmSlice.actions;
+export const { setFilmById } = currentFilmSlice.actions;
 
 //? Selectors
 export const getFilmById = (store: RootStoreType): FilmsItemModel => store.currentFilmData.data;

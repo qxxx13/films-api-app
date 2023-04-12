@@ -1,20 +1,29 @@
 const dictionary: Record<string, string> = {
-    reviewsCount: "Количество отзывов",
     ratingGoodReview: "Рейтинг Good Review",
     ratingGoodReviewVoteCount: "Количество голосов на Good Review",
-    ratingKinopoisk: "Рейтинг kinopoisk",
-    ratingKinopoiskVoteCount: "Количество голосов на kinopoisk",
-    ratingImdb: "Рейтинг Imdb",
-    ratingImdbVoteCount: "Количество голосов на Imdb",
+    ratingKinopoisk: "Рейтинг Kinopoisk",
+    ratingKinopoiskVoteCount: "Количество голосов на Kinopoisk",
+    ratingImdb: "Рейтинг IMDb",
+    ratingImdbVoteCount: "Количество голосов на IMDb",
     ratingFilmCritics: "Оценки критиков",
     ratingFilmCriticsVoteCount: "Количество критиков",
-    ratingAwaitCount: "Ожидает подсчет количества",
-    ratingRfCriticsVoteCount: "Оценки Российских критиков",
-    year: "Год выпуска",
-    filmLength: "Длина фильма",
-    ratingAwait: "Ожидает подсчет",
-    startYear: "Год начала выпуска",
-    endYear: "Год окончания выпуска"
+    year: "Год выпуска:",
+    filmLength: "Длина фильма:",
+    //?text
+    notFound: `По вашему запросу ничего не найдено. Убедитесь, что вы правильно настроили сортировку`,
+    search: "Поиск",
+    bestFilms: "Лучшие фильмы",
+    order: "Порядок",
+    type: "Тип",
+    ratingFrom: "Минимальный рейтинг",
+    sort: "Сортировать",
+    rating: "Рейтинг",
+    voteCount: "Кол-во голосов",
+    all: "Все",
+    film: "Фильм",
+    tvShow: "Тв-шоу",
+    tvSerial: "Тв-сериал",
+    miniSerial: "Мини-сериал"
 };
 
 export const translate = (key: string) => {

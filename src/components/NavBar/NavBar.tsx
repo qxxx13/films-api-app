@@ -7,6 +7,8 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Toolbar from '@mui/material/Toolbar';
 
+import { translate } from '../../common/translate/translate';
+
 export const NavBar: React.FC = () => {
 
     const navigate = useNavigate();
@@ -22,8 +24,8 @@ export const NavBar: React.FC = () => {
                 <Toolbar sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box sx={{ borderColor: 'divider' }}>
                         <Tabs value={value} onChange={onChange}>
-                            <Tab value='1' label='Поиск' onClick={() => navigate(`films-api-app`)} />
-                            <Tab value='3' label='Лучшие фильмы' onClick={() => navigate('bestfilms')} />
+                            <Tab value='1' label={translate('search')} onClick={() => navigate(`films-api-app`)} />
+                            <Tab value='3' label={translate('bestFilms')} onClick={() => navigate('bestfilms')} />
                         </Tabs>
                     </Box>
                 </Toolbar>

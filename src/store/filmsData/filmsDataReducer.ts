@@ -27,11 +27,15 @@ const filmsSLice = createSlice({
         },
         setKeyWords: (state, action: PayloadAction<string>) => {
             state.filters.keyWords = action.payload;
+        },
+        clearTotalPage: (state) => {
+            state.data.totalPages = 0;
         }
     }
 });
 
-export const { setKeyWords, setFilmsCurrentPage, setFilmsData, setOrder, setRatingFrom, setType } = filmsSLice.actions;
+export const { setKeyWords, setFilmsCurrentPage, setFilmsData, setOrder, setRatingFrom, setType, clearTotalPage } =
+    filmsSLice.actions;
 
 //? Selectors
 export const getData = (store: RootStoreType): FilmsModel => store.filmsData.data;
