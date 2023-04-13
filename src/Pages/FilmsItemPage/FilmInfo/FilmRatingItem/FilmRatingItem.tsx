@@ -8,11 +8,10 @@ type FilmRatingItemProps = {
 };
 
 export const FilmRatingItem: React.FC<FilmRatingItemProps> = ({ value, count, Icon }) => {
-
-    const Temp = Icon as React.FC<React.SVGProps<SVGSVGElement>>;
+    const WebsiteIcon = Icon as React.FC<React.SVGProps<SVGSVGElement>>;
     return (
         <Stack flexDirection='row' alignItems='center' sx={{ mr: 2 }}>
-            <Temp />
+            <WebsiteIcon />
             <Stack sx={{ ml: '4px' }}>
                 <Typography variant='body2'>{value}</Typography>
                 <Typography variant='body2' color='secondary'>{count}</Typography>

@@ -25,20 +25,20 @@ export const SearchField: React.FC = () => {
         setSearchValue(e.target.value);
     };
 
-    useEffect(() => {
-        updateFilms();
-    }, [updateFilms]);
-
-    const onSearch = () => {
+    const onSearch = useCallback(() => {
         dispatch(clearTotalPage());
         dispatch(setFilmsCurrentPage(1));
         updateSearch();
         updateFilms();
-    };
+    }, [dispatch, updateSearch, updateFilms]);
 
     const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
         e.code === 'Enter' && onSearch();
     };
+
+    useEffect(() => {
+        updateFilms();
+    }, [updateFilms]);
 
     return (
         <TextField

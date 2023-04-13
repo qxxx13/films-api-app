@@ -7,10 +7,10 @@ const dictionary: Record<string, string> = {
     ratingImdbVoteCount: "Количество голосов на IMDb",
     ratingFilmCritics: "Оценки критиков",
     ratingFilmCriticsVoteCount: "Количество критиков",
-    year: "Год выпуска:",
-    filmLength: "Длина фильма:",
+    year: "Год выпуска",
+    filmLength: "Длина фильма",
     //?text
-    notFound: `По вашему запросу ничего не найдено. Убедитесь, что вы правильно настроили сортировку`,
+    notFound: `По вашему запросу ничего не найдено. Проверьте ваш поисковой запрос и сортировку`,
     search: "Поиск",
     bestFilms: "Лучшие фильмы",
     order: "Порядок",

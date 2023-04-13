@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Scrollbars from 'react-custom-scrollbars-2';
-import { Pagination, Stack, Typography } from '@mui/material';
+import { Container, Pagination, Stack, Typography } from '@mui/material';
 
 import { useAppDispatch, useAppSelector } from './../../store/hooks';
 import { SearchField } from './SearchField/SearchField';
@@ -19,28 +19,28 @@ export const SearchPage: React.FC = () => {
     const currentPage = useAppSelector(getFilmsCurrentPage);
     const isLoading = useAppSelector(getIsLoading);
 
-    const onPaginationChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    const onPaginationChange = useCallback((event: React.ChangeEvent<unknown>, page: number) => {
         dispatch(setFilmsCurrentPage(page));
-    };
+    }, [dispatch, setFilmsCurrentPage]);
 
     return (
-        <Stack direction='row' sx={{ m: '0 auto', maxWidth: 1200, maxHeight: 'calc(100vh - 64px)' }}>
-            <Stack direction='column' sx={{ width: '100%' }}>
-                <SearchField />
-                {totalPage ?
-                    <Pagination count={totalPage} sx={{ display: 'flex', justifyContent: 'center', m: '16px 0px 16px 0px' }} onChange={onPaginationChange} page={currentPage} />
-                    :
-                    <></>
-                }
-                <Scrollbars style={{ height: '100vh' }}>
-                    {films.length < 1 && !isLoading
-                        ?
-                        <Typography color="textPrimary" variant='h3' sx={{ display: 'flex', justifyContent: 'center' }}>{translate('notFound')}</Typography>
-                        :
-                        <FilmsList films={films} />
+        <Container>
+            <Stack direction='row' sx={{ maxHeight: 'calc(100vh - 64px)' }}>
+                <Stack direction='column' sx={{ width: '100%' }}>
+                    <SearchField />
+                    {totalPage !== 0 &&
+                        <Pagination count={totalPage} sx={{ display: 'flex', justifyContent: 'center', m: '16px 0px 16px 0px' }} onChange={onPaginationChange} page={currentPage} />
                     }
-                </Scrollbars>
+                    <Scrollbars style={{ height: '100vh' }}>
+                        {films.length < 1 && !isLoading
+                            ?
+                            <Typography color="textPrimary" variant='h5' sx={{ display: 'flex', justifyContent: 'center', padding: 3 }}>{translate('notFound')}</Typography>
+                            :
+                            <FilmsList films={films} />
+                        }
+                    </Scrollbars>
+                </Stack>
             </Stack>
-        </Stack>
+        </Container>
     );
 };

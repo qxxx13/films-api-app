@@ -9,7 +9,7 @@ import { fetchBestFilmsFromApi, fetchFilmById, fetchFilmsByGenresFromApi } from 
 import { setIsLoading } from "../appReducer/appReducer";
 import { setBestFilmsData } from "../bestFilmsData/bestFilmsDataReducer";
 import { setFilmById } from "../currentFilmData/currentFilmReducer";
-import { getFilters, setFilmsData } from "../filmsData/filmsDataReducer";
+import { getFilters, getKeyWords, setFilmsData } from "../filmsData/filmsDataReducer";
 import { loadBestFilms, loadFilmById, loadFilms } from "./filmsSagaActions";
 
 export const filmsSaga = [
@@ -22,7 +22,8 @@ function* fetchFilmsWorker(action: PayloadAction<number>): Generator {
     try {
         yield put(setIsLoading(true));
         const filters = (yield select(getFilters)) as FiltersModel;
-        const data = (yield call(fetchFilmsByGenresFromApi, action.payload, filters)) as FilmsModel;
+        const keyWords = (yield select(getKeyWords)) as string;
+        const data = (yield call(fetchFilmsByGenresFromApi, action.payload, filters, keyWords)) as FilmsModel;
         yield put(setFilmsData(data));
         yield put(setIsLoading(false));
     } catch (error) {

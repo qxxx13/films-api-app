@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import { FiltersModel } from "./../../models/FiltersModel";
 import { FilmsItemModel } from "../../models/FilmsItemModel";
 import { FilmsModel } from "../../models/FilmsModel";
-import { FiltersModel } from "../../models/FiltersModel";
 import { RootStoreType } from "../rootReducer";
 import { initialFilmsState } from "./filmsDataModel";
 
@@ -16,17 +16,11 @@ const filmsSLice = createSlice({
         setFilmsData: (state, action: PayloadAction<FilmsModel>) => {
             state.data = action.payload;
         },
-        setOrder: (state, action: PayloadAction<string>) => {
-            state.filters.order = action.payload;
-        },
-        setType: (state, action: PayloadAction<string>) => {
-            state.filters.type = action.payload;
-        },
-        setRatingFrom: (state, action: PayloadAction<number>) => {
-            state.filters.ratingFrom = action.payload;
+        setFilters: (state, action: PayloadAction<FiltersModel>) => {
+            state.filters = action.payload;
         },
         setKeyWords: (state, action: PayloadAction<string>) => {
-            state.filters.keyWords = action.payload;
+            state.keyWords = action.payload;
         },
         clearTotalPage: (state) => {
             state.data.totalPages = 0;
@@ -34,8 +28,7 @@ const filmsSLice = createSlice({
     }
 });
 
-export const { setKeyWords, setFilmsCurrentPage, setFilmsData, setOrder, setRatingFrom, setType, clearTotalPage } =
-    filmsSLice.actions;
+export const { setKeyWords, setFilmsCurrentPage, setFilmsData, setFilters, clearTotalPage } = filmsSLice.actions;
 
 //? Selectors
 export const getData = (store: RootStoreType): FilmsModel => store.filmsData.data;
@@ -43,6 +36,6 @@ export const getFilms = (store: RootStoreType): FilmsItemModel[] => store.filmsD
 export const getFilmsCurrentPage = (store: RootStoreType): number => store.filmsData.currentPage;
 export const getTotalPage = (store: RootStoreType): number => store.filmsData.data.totalPages;
 export const getFilters = (store: RootStoreType): FiltersModel => store.filmsData.filters;
-export const getKeyWords = (store: RootStoreType): string => store.filmsData.filters.keyWords;
+export const getKeyWords = (store: RootStoreType): string => store.filmsData.keyWords;
 
 export default filmsSLice.reducer;

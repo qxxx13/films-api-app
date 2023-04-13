@@ -9,9 +9,8 @@ export const initialFilmsState = {
     filters: {
         order: "RATING",
         type: "ALL",
-        ratingFrom: 1,
-        ratingTo: 10,
-        keyWords: ""
+        ratingFrom: 1
     },
+    keyWords: "",
     currentPage: 1
 };

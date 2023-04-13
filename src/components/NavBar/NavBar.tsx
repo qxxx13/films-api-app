@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
@@ -18,14 +18,17 @@ export const NavBar: React.FC = () => {
         setValue(newValue);
     };
 
+    const goToSearchPage = useCallback(() => navigate(`films-api-app`), [navigate]);
+    const goToBestFilmsPage = useCallback(() => navigate('bestfilms'), [navigate]);
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position='static' sx={{ backgroundImage: 'none', backgroundColor: '#071429' }}>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box sx={{ borderColor: 'divider' }}>
                         <Tabs value={value} onChange={onChange}>
-                            <Tab value='1' label={translate('search')} onClick={() => navigate(`films-api-app`)} />
-                            <Tab value='3' label={translate('bestFilms')} onClick={() => navigate('bestfilms')} />
+                            <Tab value='1' label={translate('search')} onClick={goToSearchPage} />
+                            <Tab value='3' label={translate('bestFilms')} onClick={goToBestFilmsPage} />
                         </Tabs>
                     </Box>
                 </Toolbar>

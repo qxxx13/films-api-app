@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useCallback } from 'react';
+import React from 'react';
+import { useCallback, useEffect } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
-import { Pagination, Skeleton } from '@mui/material';
+import { Container, Pagination } from '@mui/material';
 import Box from '@mui/material/Box';
 
 import { getBestFilmsCurrentPage, getBestFilmsPagesCount, setBestFilmsCurrentPage } from './../../store/bestFilmsData/bestFilmsDataReducer';
@@ -28,16 +28,17 @@ export const BestFilmsPage: React.FC = () => {
     }, [updateFilms]);
 
     return (
-        <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', maxWidth: 1200, m: '0 auto', maxHeight: 'calc(100vh - 64px)' }}>
-            {totalPages ?
-                <Pagination count={totalPages} sx={{ display: 'flex', justifyContent: 'center', m: '16px 0 16px 0' }} onChange={onPaginationChange} page={page} />
-                :
-                <Skeleton variant="rectangular" width={'100%'} height={45} sx={{ mt: 2 }} />
-            }
-            <Scrollbars style={{ height: '100vh' }}>
-                <FilmsList films={films} />
-            </Scrollbars>
-        </Box>
+        <Container>
+            <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', maxHeight: 'calc(100vh - 64px)' }}>
+                {totalPages ?
+                    <Pagination count={totalPages} sx={{ display: 'flex', justifyContent: 'center', m: '16px 0 16px 0' }} onChange={onPaginationChange} page={page} />
+                    :
+                    <></>
+                }
+                <Scrollbars style={{ height: '100vh' }}>
+                    <FilmsList films={films} />
+                </Scrollbars>
+            </Box>
+        </Container>
     );
 };
-

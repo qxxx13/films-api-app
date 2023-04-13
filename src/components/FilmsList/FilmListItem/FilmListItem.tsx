@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CardActionArea, CardContent, CardMedia, Skeleton, Typography, useMediaQuery } from '@mui/material';
 import Card from '@mui/material/Card';
@@ -17,7 +17,9 @@ export const FilmListItem: React.FC<FilmItemProps> = (props) => {
     const navigate = useNavigate();
     const isDesktop = useMediaQuery('(min-width:900px)');
 
-    return <Card sx={{ width: isDesktop ? 250 : 135 }} key={props.film.id} onClick={() => navigate(`/films/${props.film.id}`)} elevation={5}>
+    const goToFilmItemPage = useCallback(() => navigate(`/films/${props.film.id}`), [navigate]);
+
+    return <Card sx={{ width: isDesktop ? 250 : 135 }} key={props.film.id} onClick={goToFilmItemPage} elevation={5}>
         <CardActionArea sx={{ height: '100%' }}>
             {!!props.film.posterUrl ?
                 <CardMedia
