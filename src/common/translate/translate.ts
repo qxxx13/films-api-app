@@ -32,7 +32,13 @@ const dictionary: Record<string, string> = {
     TV_SHOW: "Тв-шоу",
     TV_SERIES: "Тв-сериал",
     MINI_SERIES: "Мини-сериал",
-    watchOnKinopoisk: "Смотреть на Kinopoisk"
+    watchOnKinopoisk: "Смотреть на Kinopoisk",
+    Kinopoisk: "Рейтинг сайта Kinopoisk.ru",
+    Imdb: "Рейтинг сайта Imdb.com",
+    Critics: "Рейтинг критиков",
+    avgRating: "Средняя оценка",
+    countRating: "Кол-во голосов",
+    back: "Назад"
 };
 
 export const translate = (key: string) => {

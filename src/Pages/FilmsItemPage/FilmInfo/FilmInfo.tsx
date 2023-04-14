@@ -32,7 +32,7 @@ export const FilmInfo: React.FC<FilmInfoProps> = ({ film }) => {
     return (
         <Stack>
             <Typography variant={isDesktop ? 'h3' : 'h4'} gutterBottom>{film?.nameRu || film?.nameEn || film?.nameOriginal}</Typography>
-            <Link href={film.webUrl} sx={{ textDecoration: 'none', width: '170px' }}>{translate('watchOnKinopoisk')}</Link>
+            <Link href={film.webUrl} target="_blank" sx={{ textDecoration: 'none', width: '170px' }}>{translate('watchOnKinopoisk')}</Link>
             {film.description &&
                 <Box sx={{ display: 'flex', maxHeight: 250, overflow: 'auto', borderTop: '2px solid', borderBottom: '2px solid', mt: 2 }}>
                     <Typography variant='body1' gutterBottom>{film?.description}</Typography>
@@ -42,7 +42,7 @@ export const FilmInfo: React.FC<FilmInfoProps> = ({ film }) => {
                 <Stack>
                     {filmInfo}
                 </Stack>
-                <Stack flexDirection='row' sx={{ bgcolor: '#18688f', padding: 2, borderRadius: 3, height: '30%', mt: 1 }}>
+                <Stack flexDirection='row' sx={{ bgcolor: '#18688f', padding: 2, borderRadius: 3, height: '30%', mt: '10px', width: 'fit-content', gap: '0 16px' }}>
                     <FilmRating film={film} />
                 </Stack>
             </Stack>

@@ -2,11 +2,12 @@ import React from 'react';
 import { useCallback, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { Container, IconButton, Skeleton, Stack, useMediaQuery } from '@mui/material';
+import { Container, IconButton, Skeleton, Stack, Tooltip, Typography, useMediaQuery } from '@mui/material';
 import Paper from '@mui/material/Paper';
 
 import { useAppDispatch, useAppSelector } from './../../store/hooks';
 import { FilmInfo } from './FilmInfo/FilmInfo';
+import { translate } from '../../common/translate/translate';
 import { getIsLoading } from '../../store/appReducer/appReducer';
 import { getFilmById } from '../../store/currentFilmData/currentFilmReducer';
 import { loadFilmById } from '../../store/sagas/filmsSagaActions';
@@ -29,9 +30,12 @@ export const FilmsItemPage: React.FC = () => {
 
     return (
         <>
-            <IconButton sx={{ position: 'absolute', mt: 2 }} color='primary' onClick={goBack} size='large'>
-                <ArrowBackIosNewIcon />
-            </IconButton>
+            <Tooltip title={<Typography variant='body2'>{translate('back')}</Typography>} arrow>
+                <IconButton sx={{ position: 'absolute', top: isDesktop ? 8 : 4, left: 8 }} color='primary' onClick={goBack} size='large'>
+                    <ArrowBackIosNewIcon />
+                </IconButton>
+            </Tooltip>
+
             <Container sx={{ pt: 2 }}>
                 <Stack direction='row' justifyContent='center'>
                     {!isLoading ?
