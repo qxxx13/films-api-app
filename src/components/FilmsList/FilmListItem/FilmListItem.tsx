@@ -21,16 +21,12 @@ export const FilmListItem: React.FC<FilmItemProps> = (props) => {
 
     return <Card sx={{ width: isDesktop ? 250 : 135 }} key={props.film.id} onClick={goToFilmItemPage} elevation={5}>
         <CardActionArea sx={{ height: '100%' }}>
-            {!!props.film.posterUrl ?
-                <CardMedia
-                    component='img'
-                    sx={{ height: isDesktop ? 350 : 200 }}
-                    image={props.film.posterUrl}
-                    alt='filmsImage'
-                />
-                :
-                <Skeleton variant="rectangular" width={'100%'} height={350} sx={{ mt: 2 }} />
-            }
+            <CardMedia
+                component='img'
+                sx={{ height: isDesktop ? 350 : 200 }}
+                image={props.film.posterUrl}
+                alt='filmsImage'
+            />
             <CardContent sx={{ height: '100%' }}>
                 <Typography gutterBottom variant='body1' component='div'>
                     {props.film.nameRu || props.film.nameEn}

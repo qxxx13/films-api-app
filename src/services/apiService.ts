@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
     baseURL: "https://kinopoiskapiunofficial.tech/api/",
     timeout: 30000,
     headers: {
-        "X-API-KEY": "84c363cf-3c24-4ae8-9baf-f64395a672a8",
+        "X-API-KEY": "64537635-d655-4ddb-9df4-c481e696dabf",
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
     }

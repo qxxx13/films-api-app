@@ -8,7 +8,15 @@ const dictionary: Record<string, string> = {
     ratingFilmCritics: "Оценки критиков",
     ratingFilmCriticsVoteCount: "Количество критиков",
     year: "Год выпуска",
+    YEAR: "Год выпуска",
     filmLength: "Длина фильма",
+    startYear: "Год начала выпуска",
+    endYear: "Год окончания выпуска",
+    shortFilm: "Короткометражный фильм",
+    completed: "Завершен",
+    hasImax: "Поддержка Imax",
+    has3D: "Поддержка 3D",
+    VIDEO: "Видео",
     //?text
     notFound: `По вашему запросу ничего не найдено. Проверьте ваш поисковой запрос и сортировку`,
     search: "Поиск",
@@ -17,13 +25,14 @@ const dictionary: Record<string, string> = {
     type: "Тип",
     ratingFrom: "Минимальный рейтинг",
     sort: "Сортировать",
-    rating: "Рейтинг",
-    voteCount: "Кол-во голосов",
-    all: "Все",
-    film: "Фильм",
-    tvShow: "Тв-шоу",
-    tvSerial: "Тв-сериал",
-    miniSerial: "Мини-сериал"
+    RATING: "Рейтинг",
+    NUM_VOTE: "Кол-во голосов",
+    ALL: "Все",
+    FILM: "Фильм",
+    TV_SHOW: "Тв-шоу",
+    TV_SERIES: "Тв-сериал",
+    MINI_SERIES: "Мини-сериал",
+    watchOnKinopoisk: "Смотреть на Kinopoisk"
 };
 
 export const translate = (key: string) => {

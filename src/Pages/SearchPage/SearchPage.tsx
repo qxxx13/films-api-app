@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import Scrollbars from 'react-custom-scrollbars-2';
-import { Container, Pagination, Stack, Typography } from '@mui/material';
+import { Box, Container, Pagination, Stack, Typography } from '@mui/material';
 
 import { useAppDispatch, useAppSelector } from './../../store/hooks';
 import { SearchField } from './SearchField/SearchField';
@@ -29,9 +29,9 @@ export const SearchPage: React.FC = () => {
                 <Stack direction='column' sx={{ width: '100%' }}>
                     <SearchField />
                     {totalPage !== 0 &&
-                        <Pagination count={totalPage} sx={{ display: 'flex', justifyContent: 'center', m: '16px 0px 16px 0px' }} onChange={onPaginationChange} page={currentPage} />
+                        <Pagination count={totalPage} sx={{ display: 'flex', justifyContent: 'center', m: '8px 0px 8px 0px' }} onChange={onPaginationChange} page={currentPage} />
                     }
-                    <Scrollbars style={{ height: '100vh' }}>
+                    <Scrollbars style={{ height: '100vh' }} renderThumbVertical={() => <Box sx={{ bgcolor: 'rgba(0, 200, 241, 0.4)', borderRadius: 4 }} />}>
                         {films.length < 1 && !isLoading
                             ?
                             <Typography color="textPrimary" variant='h5' sx={{ display: 'flex', justifyContent: 'center', padding: 3 }}>{translate('notFound')}</Typography>

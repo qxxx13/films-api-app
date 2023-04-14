@@ -17,9 +17,9 @@ export const BestFilmsPage: React.FC = () => {
     const totalPages = useAppSelector(getBestFilmsPagesCount);
     const films = useAppSelector(getBestFilmsForList);
 
-    const onPaginationChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    const onPaginationChange = useCallback((event: React.ChangeEvent<unknown>, page: number) => {
         dispatch(setBestFilmsCurrentPage(page));
-    };
+    }, [dispatch, setBestFilmsCurrentPage]);
 
     const updateFilms = useCallback(() => dispatch(loadBestFilms(page)), [dispatch, page]);
 
@@ -35,7 +35,7 @@ export const BestFilmsPage: React.FC = () => {
                     :
                     <></>
                 }
-                <Scrollbars style={{ height: '100vh' }}>
+                <Scrollbars style={{ height: '100vh' }} renderThumbVertical={() => <Box sx={{ bgcolor: 'rgba(0, 200, 241, 0.4)', borderRadius: 4 }} />}>
                     <FilmsList films={films} />
                 </Scrollbars>
             </Box>

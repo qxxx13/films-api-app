@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useCallback, useState } from 'react';
 import { Button, FormControl, InputLabel, Slider, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -13,11 +13,37 @@ import { useAppDispatch } from '../../../store/hooks';
 import { useAppSelector } from '../../../store/hooks';
 import { loadFilms } from '../../../store/sagas/filmsSagaActions';
 
+const typeName = [
+    'ALL',
+    'FILM',
+    'TV_SHOW',
+    'TV_SERIES',
+    'MINI_SERIES'
+];
+
+const orderName = [
+    'RATING',
+    'NUM_VOTE',
+    'YEAR',
+];
+
 export const SideBar: React.FC = () => {
     const dispatch = useAppDispatch();
 
     const filters = useAppSelector(getFilters);
     const isLoading = useAppSelector(getIsLoading);
+
+    const typeLits = useMemo(() => {
+        return typeName.map(type => {
+            return <MenuItem value={type} key={type}>{translate(type)}</MenuItem>;
+        });
+    }, []);
+
+    const orderLists = useMemo(() => {
+        return orderName.map((order) => {
+            return <MenuItem value={order} key={order}>{translate(order)}</MenuItem>;
+        });
+    }, []);
 
     const [order, setOrder] = useState(filters.order);
     const [type, setType] = useState(filters.type);
@@ -44,19 +70,13 @@ export const SideBar: React.FC = () => {
                 <FormControl fullWidth>
                     <InputLabel id='order'>{translate('order')}</InputLabel>
                     <Select labelId='order' label='Порядок' value={order} onChange={(event: SelectChangeEvent) => setOrder(event.target.value)} sx={{ width: '100%', mb: 2 }}>
-                        <MenuItem value={'RATING'}>{translate('rating')}</MenuItem>
-                        <MenuItem value={'NUM_VOTE'}>{translate('voteCount')}</MenuItem>
-                        <MenuItem value={'YEAR'}>{translate('year')}</MenuItem>
+                        {orderLists}
                     </Select>
                 </FormControl>
                 <FormControl sx={{ width: '100%' }}>
                     <InputLabel id='type'>{translate('type')}</InputLabel>
                     <Select labelId='type' label="Тип" value={type} onChange={(event: SelectChangeEvent) => setType(event.target.value)} sx={{ width: '100%' }}>
-                        <MenuItem value={'ALL'}>{translate('all')}</MenuItem>
-                        <MenuItem value={'FILM'}>{translate('film')}</MenuItem>
-                        <MenuItem value={'TV_SHOW'}>{translate('tvShow')}</MenuItem>
-                        <MenuItem value={'TV_SERIES'}>{translate('tvSerial')}</MenuItem>
-                        <MenuItem value={'MINI_SERIES'}>{translate('miniSerial')}</MenuItem>
+                        {typeLits}
                     </Select>
                 </FormControl>
             </Box>
