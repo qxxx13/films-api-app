@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Drawer, IconButton, InputAdornment, TextField } from '@mui/material';
 
 import { translate } from '../../../common/translate/translate';
+import { getIsLoading } from '../../../store/appReducer/appReducer';
 import { clearTotalPage, getFilmsCurrentPage, getKeyWords, setFilmsCurrentPage, setKeyWords } from '../../../store/filmsData/filmsDataReducer';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { loadFilms } from '../../../store/sagas/filmsSagaActions';
@@ -14,6 +15,7 @@ export const SearchField: React.FC = () => {
 
     const currentPage = useAppSelector(getFilmsCurrentPage);
     const keyWords = useAppSelector(getKeyWords);
+    const isLoading = useAppSelector(getIsLoading);
 
     const [searchValue, setSearchValue] = useState(keyWords);
     const [openMenu, setOpenMenu] = useState(false);
@@ -62,7 +64,7 @@ export const SearchField: React.FC = () => {
                 ),
                 endAdornment: (
                     <InputAdornment position='end'>
-                        <IconButton onClick={onSearch}>
+                        <IconButton onClick={onSearch} disabled={isLoading ? true : false}>
                             <SearchIcon />
                         </IconButton>
                     </InputAdornment>
